@@ -1,0 +1,91 @@
+.flex-container {
+    display: flex;
+}
+
+#header {
+    background-color: rgb(168, 255, 215);
+    flex: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    /*background-color: blue;*/
+    width: 100px;
+    text-align: center;
+}
+
+#linkBar {
+    background-color: rgb(43, 43, 43);
+    flex: 100%;
+    height: 40px;
+    align-items: center;
+
+}
+
+#linkBar div {
+    /*background-color: blue;*/
+    width: 120px;
+    text-align: center;
+
+}
+
+#linkBar div a {
+    color: white;
+    text-decoration: none;
+}
+
+#main {
+    flex: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#sidebar {
+    background-color: rgb(219, 219, 219);
+    flex: 35%;
+    flex-direction: column;
+}
+
+#sidebar div {
+    padding: 10px;
+}
+
+#sidebar img {
+    width: 100%;
+}
+
+#content {
+    flex: 65%;
+    flex-direction: column;
+}
+
+#content div {
+    padding: 10px;
+}
+
+#content img {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    #sidebar, #content {
+      flex: 100%;
+    }
+  }
+
+#footer {
+    background-color: rgb(168, 255, 215);
+    flex: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#footer div {
+    /*background-color: blue;*/
+    width: 200px;
+    text-align: center;
+}
