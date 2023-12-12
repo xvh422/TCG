@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>My todo list</h1>
+        <form id="todo">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" required>
+          <label for="priority">Priority</label>
+          <select name="priority" id="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button>Add</button>
+        </form>
+        <ul id="todo-pane">
+          <li class="todo just-created">
+            <img src="https://cdn1.iconfinder.com/data/icons/prettyoffice8/256/Flag-yellow.png">
+            <div>Do the washing.</div>
+          </li>
+        </ul>
+        <footer>
+          <small>
+            Flag images used with thanks from <a href="https://www.iconfinder.com/iconsets/prettyoffice8">https://www.iconfinder.com/iconsets/prettyoffice8</a>.
+          </small>
+        </footer>
+      </div>
+<script>
+    const form = document.getElementById('todo');
+    const todoItem = document.getElementsByTagName('li')[0];
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+    });
+    todoItem.addEventListener('click', function(event) {
+        const item = event.currentTarget;
+        item.remove();
+    });
+</script>
+</body>
+</html>
