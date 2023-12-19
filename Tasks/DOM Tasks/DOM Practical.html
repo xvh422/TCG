@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    h1{
+  text-align: center;
+}
+
+.form-preamble {
+  text-align: center;
+}
+
+form {
+  width: 55em;
+  margin: 1em auto;
+}
+
+fieldset {
+  margin-bottom: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  margin-left: 1em;
+}
+
+small {
+  margin-top: 1em;
+  display: block;
+  font-size: medium;
+}
+</style>
+</head>
+<body>
+    <form id="filters">
+        <fieldset>
+          <legend>Type</legend>
+              <input type="radio" id="showAll" value="all" checked="checked" animal="all" name="animalType">
+              <label for="showAll">Show All</label>
+      
+              <input type="radio" id="bear" value="bear" animal="bear" name="animalType">
+              <label for="bear">Bears</label>
+      
+              <input type="radio" id="duck" value="duck" animal="duck" name="animalType">
+              <label for="duck">Ducks</label>
+      
+              <input type="radio" id="kitten" value="kitten" animal="kitten" name="animalType">
+              <label for="kitten">Kittens</label>
+      
+              <input type="radio" id="tiger" value="tiger" animal="tiger" name="animalType">
+              <label for="tiger">Tigers</label>
+        </fieldset>
+        <label for="search">Search</label>
+        <input type="search" name="search" id="search">   
+    </form>
+    <p id="helpText">Showing animals that match the search "<span id="searchDisplay"></span>" and the filter "<span id="filterDisplay"></span>"</p>
+    <img loading="lazy" src="https://images.pexels.com/photos/1466592/pexels-photo-1466592.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Brown Bear On Body Of Water" animal="bear" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/451230/pexels-photo-451230.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Selective Focus Photo of Polar Bear " animal="bear" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/158140/european-brown-bear-wild-animal-bear-dangerous-158140.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Brown Bear Lying on Green Lawn Grass" animal="bear" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/3048722/pexels-photo-3048722.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Close-up Photo of Grizzly Bear" animal="bear" class="imageFilter">
+
+    <img loading="lazy" src="https://images.pexels.com/photos/162059/duck-water-bird-water-mirroring-162059.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Brown White Black Duck" animal="duck" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/162137/duckling-birds-yellow-fluffy-162137.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Yellow Duckling on Gray Dirt" animal="duck" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/221429/pexels-photo-221429.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Black and Gray Duck on Body of Water" animal="duck" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/2294541/pexels-photo-2294541.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Gray and Green Duck Wading " animal="duck" class="imageFilter">
+
+    <img loading="lazy" src="https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Close Up Photography of Brown and White Kitten" animal="kitten" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Gray and White Kitten on White Bed" animal="kitten" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/691583/pexels-photo-691583.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Closeup Up Photography of Tri Color Kitten" animal="kitten" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Cute Kitten hiding behind a Pillow" animal="kitten" class="imageFilter">
+
+    <img loading="lazy" src="https://images.pexels.com/photos/46251/sumatran-tiger-tiger-big-cat-stripes-46251.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Tiger Above Green Grass during Day Time" animal="tiger" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/2649841/pexels-photo-2649841.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Tiger lying on green grass" animal="tiger" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/64152/tiger-cub-tiger-cub-big-cat-64152.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Adult Tiger" animal="tiger" class="imageFilter">
+    <img loading="lazy" src="https://images.pexels.com/photos/2055100/pexels-photo-2055100.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=350" alt="Tiger Looking Ferocious" animal="tiger" class="imageFilter">
+
+<script>
+const images = document.getElementsByClassName('imageFilter');
+const form = document.forms.filters;
+const animalRadios = form.elements.animalType;
+const search = document.getElementById('search');
+
+function filterAnimals () {
+  const searchContents = search.value;
+  const selectedAnimal = animalRadios.value;
+  const searchDisplay = document.getElementById('searchDisplay');
+  const filterDisplay = document.getElementById('filterDisplay');
+  searchDisplay.textContent = searchContents;
+  filterDisplay.textContent = selectedAnimal;
+  for (const image of images) {
+    const alt = image.getAttribute('alt');
+    if (alt.includes(searchContents) === true && ((selectedAnimal === 'all' || selectedAnimal === image.getAttribute('animal')))) {
+      image.classList.remove('hidden');
+    }
+    else {
+      image.classList.add('hidden');
+    }
+  }
+}
+
+for (const animalRadio of animalRadios) {
+  animalRadio.addEventListener('change', filterAnimals);
+}
+
+search.addEventListener('keyup', filterAnimals);
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+});
+</script>
+</body>
+</html>
